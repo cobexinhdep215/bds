@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { PropertyCard } from '@/components/common/PropertyCard';
-import '../../../../home.css';
+import '../../../home.css';
 import { ArrowLeft, User, Phone, Mail, MapPin } from 'lucide-react';
 
 const formatPrice = (price: number) => {
