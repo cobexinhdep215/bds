@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header';
 import { PropertyCard } from '@/components/common/PropertyCard';
 import { ChevronDown, Search, X, Check, ArrowLeft, Mountain, Sun, Flame, Leaf, DoorOpen, Castle } from 'lucide-react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import '../home.css';
 
 const PROVINCES = [
   { name: 'Hà Nội', districts: ['An Khánh', 'Ba Đình', 'Bắc Từ Liêm', 'Bồ Đề', 'Cầu Giấy', 'Chương Mỹ', 'Đại Mỗ', 'Đan Phượng', 'Đông Anh', 'Đống Đa', 'Gia Lâm', 'Hà Đông', 'Hai Bà Trưng', 'Hoài Đức', 'Hoàn Kiếm', 'Hoàng Mai', 'Long Biên', 'Mê Linh', 'Nam Từ Liêm', 'Phú Xuyên', 'Phúc Thọ', 'Quốc Oai', 'Sóc Sơn', 'Sơn Tây', 'Tây Hồ', 'Thạch Thất', 'Thanh Oai', 'Thanh Trì', 'Thanh Xuân', 'Thường Tín', 'Ứng Hòa'] },
@@ -49,6 +50,19 @@ const DIRECTIONS_CONFIG = [
 
 const BEDS = ['Studio', '1', '2', '3', '4+'];
 const DIRECTIONS = ['Bắc', 'Đông Bắc', 'Đông', 'Đông Nam', 'Nam', 'Tây Nam', 'Tây', 'Tây Bắc'];
+
+const formatPrice = (price: number) => {
+  if (!price) return 'Đang cập nhật';
+  if (price >= 1000000000) return (price / 1000000000).toLocaleString('vi-VN', { maximumFractionDigits: 2 }) + ' tỷ';
+  if (price >= 1000000) return (price / 1000000).toLocaleString('vi-VN', { maximumFractionDigits: 2 }) + ' triệu';
+  return price.toLocaleString('vi-VN') + ' đ';
+};
+
+const formatPricePerM2 = (price: number, area: number) => {
+  const priceM2 = price / (area || 1);
+  if (priceM2 >= 1000000) return (priceM2 / 1000000).toLocaleString('vi-VN', { maximumFractionDigits: 2 }) + ' triệu/m²';
+  return Math.round(priceM2).toLocaleString('vi-VN') + ' đ/m²';
+};
 
 function ListingContent() {
   const router = useRouter();
@@ -446,8 +460,8 @@ function ListingContent() {
              properties.length > 0 ? properties.map(p => (
                <PropertyCard key={p.id} property={{
                  ...p,
-                 price: p.price.toLocaleString('vi-VN') + ' đ',
-                 area: Math.round(p.price / (p.area || 1)).toLocaleString('vi-VN') + ' đ/m²',
+                 price: formatPrice(p.price),
+                 area: formatPricePerM2(p.price, p.area),
                  location: `${p.district ? p.district + ', ' : ''}${p.province}`,
                  image: p.images?.[0] || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80',
                  beds: parseInt(p.bedrooms) || 0,

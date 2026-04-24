@@ -2,7 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { PropertyCard } from '@/components/common/PropertyCard';
+import '../../../../home.css';
 import { ArrowLeft, User, Phone, Mail, MapPin } from 'lucide-react';
+
+const formatPrice = (price: number) => {
+  if (!price) return 'Đang cập nhật';
+  if (price >= 1000000000) return (price / 1000000000).toLocaleString('vi-VN', { maximumFractionDigits: 2 }) + ' tỷ';
+  if (price >= 1000000) return (price / 1000000).toLocaleString('vi-VN', { maximumFractionDigits: 2 }) + ' triệu';
+  return price.toLocaleString('vi-VN') + ' đ';
+};
+
+const formatPricePerM2 = (price: number, area: number) => {
+  const priceM2 = price / (area || 1);
+  if (priceM2 >= 1000000) return (priceM2 / 1000000).toLocaleString('vi-VN', { maximumFractionDigits: 2 }) + ' triệu/m²';
+  return Math.round(priceM2).toLocaleString('vi-VN') + ' đ/m²';
+};
 
 export default function AdminBrokerDetail() {
   const params = useParams();
@@ -81,8 +95,8 @@ export default function AdminBrokerDetail() {
                {properties.length > 0 ? properties.map(p => (
                   <PropertyCard key={p.id} property={{
                     ...p,
-                    price: p.price.toLocaleString('vi-VN') + ' đ',
-                    area: Math.round(p.price / (p.area || 1)).toLocaleString('vi-VN') + ' đ/m²',
+                    price: formatPrice(p.price),
+                    area: formatPricePerM2(p.price, p.area),
                     location: `${p.district ? p.district + ', ' : ''}${p.province}`,
                     image: p.images?.[0] || 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=400&q=80',
                     beds: parseInt(p.bedrooms) || 0,
