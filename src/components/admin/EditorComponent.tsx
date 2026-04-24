@@ -5,7 +5,7 @@ import JoditEditor from 'jodit-react';
 export default function EditorComponent({ value, onChange }: { value: string, onChange: (val: string) => void }) {
 	const editor = useRef(null);
 	
-	const config = {
+	const config: any = {
 		readonly: false,
         height: 400,
         placeholder: "Bắt đầu viết...",

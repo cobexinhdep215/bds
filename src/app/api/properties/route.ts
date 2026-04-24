@@ -47,7 +47,7 @@ export async function GET(request: Request) {
   }
   if (districts) {
      const districtList = districts.split(',');
-     properties = properties.filter(p => districtList.includes(p.district));
+     properties = properties.filter(p => p.district && districtList.includes(p.district));
   }
   if (minPrice) {
      properties = properties.filter(p => p.price >= parseInt(minPrice));
@@ -67,11 +67,11 @@ export async function GET(request: Request) {
   }
   if (direction) {
      const dirList = direction.split(',');
-     properties = properties.filter(p => dirList.includes(p.direction));
+     properties = properties.filter(p => p.direction && dirList.includes(p.direction));
   }
   if (balconyDirection) {
      const balList = balconyDirection.split(',');
-     properties = properties.filter(p => balList.includes(p.balconyDirection));
+     properties = properties.filter(p => p.balconyDirection && balList.includes(p.balconyDirection));
   }
 
   // Sorting

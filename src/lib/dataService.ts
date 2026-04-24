@@ -54,6 +54,8 @@ export interface Property {
   bedrooms: string;
   bathrooms: string;
   project?: string;
+  province?: string;
+  district?: string;
   direction?: string;
   balconyDirection?: string;
   propertyStatus?: string;
