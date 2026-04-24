@@ -1,0 +1,9 @@
+[
+  { "id": "1", "name": "Tin tức BĐS", "slug": "tin-tuc-bds" },
+  { "id": "2", "name": "BĐS Hà Nội", "slug": "bds-ha-noi" },
+  { "id": "3", "name": "BĐS Hồ Chí Minh", "slug": "bds-ho-chi-minh" },
+  { "id": "4", "name": "Báo cáo thị trường", "slug": "bao-cao-thi-truong" },
+  { "id": "5", "name": "Quy hoạch & Pháp lý", "slug": "quy-hoach-phap-ly" },
+  { "id": "6", "name": "Tài chính", "slug": "tai-chinh" },
+  { "id": "7", "name": "Nhà ở Xã Hội", "slug": "nha-o-xa-hoi" }
+]

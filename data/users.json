@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cada145d-7a99-471c-a4d5-aac9041ba782",
+    "email": "xuan@gmail.com",
+    "passwordHash": "$2b$10$egi3t3O4xqnJyBS/4SirM.SVEeCUVEsz9eZ6.9Z.u7HSKZH2vVkcS",
+    "name": "No Na",
+    "phone": "0933222333",
+    "role": "broker"
+  },
+  {
+    "id": "4ae3ab2a-e0cb-4595-826c-83bf32a223c1",
+    "email": "abc@gmail.com",
+    "passwordHash": "$2b$10$.Ilu.Aln8eTbV6FGJZMJJun1VbHwkqWX8iijW.2o0tQlvT3Qw3VhG",
+    "name": "abc",
+    "phone": "12343433444",
+    "role": "broker"
+  },
+  {
+    "id": "78751386-b939-4f52-888e-43f2860f6bd4",
+    "email": "admin_test@gmail.com",
+    "passwordHash": "$2b$10$eMfzwMTkDO30Rl4p3nC0qeDZitskhhDq4cr7INAouQ4nRENB8d67W",
+    "name": "Admin Test",
+    "phone": "0987654321",
+    "role": "broker"
+  }
+]
